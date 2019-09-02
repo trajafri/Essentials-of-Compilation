@@ -303,11 +303,11 @@ language used to write the compiler.
 %
 Because this book uses Racket (\url{http://racket-lang.org}), a
 descendant of Lisp, we use S-expressions to represent programs
-(Section~\ref{sec:ast}). We use grammars to defined programming languages
+(Section~\ref{sec:ast}). We use grammars to define programming languages
 (Section~\ref{sec:grammar}) and pattern matching to inspect
 individual nodes in an AST (Section~\ref{sec:pattern-matching}).  We
 use recursion to construct and deconstruct entire ASTs
-(Section~\ref{sec:recursion}).  This chapter provides an brief
+(Section~\ref{sec:recursion}).  This chapter provides a brief
 introduction to these ideas.
 
 \section{Abstract Syntax Trees and S-expressions}
@@ -347,7 +347,7 @@ node except for the root has a \emph{parent} (the node it is the child
 of). If a node has no children, it is a \emph{leaf} node.  Otherwise
 it is an \emph{internal} node.
 
-Recall that an \emph{symbolic expression} (S-expression) is either
+Recall that a \emph{symbolic expression} (S-expression) is either
 \begin{enumerate}
 \item an atom, or
 \item a pair of two S-expressions, written $(e_1 \key{.} e_2)$,
@@ -384,7 +384,7 @@ in the above case, the root AST node has operation \code{`+} and its
 two children are \code{`(read)} and \code{`(- 8)}, just as in the
 diagram \eqref{eq:arith-prog}.
 
-To build larger S-expressions one often needs to splice together
+To build larger S-expressions, one often needs to splice together
 several smaller S-expressions. Racket provides the comma operator to
 splice an S-expression into a larger one. For example, instead of
 creating the S-expression for AST \eqref{eq:arith-prog} all at once,
@@ -433,13 +433,13 @@ according to the left-hand-side.
 A name such as $\Exp$ that is
 defined by the grammar rules is a \emph{non-terminal}.
 %
-The name $\Int$ is a also a non-terminal, however,
+The name $\Int$ is also a non-terminal, however,
 we do not define $\Int$ because the
 reader already knows what an integer is.
 %
 Further, we make the simplifying design decision that all of the languages in
 this book only handle machine-representable integers.  On most modern machines
-this corresponds to integers represented with 64-bits, i.e., the in range
+this corresponds to integers represented with 64-bits, i.e., in the range
 $-2^{63}$ to $2^{63}-1$.
 %
 However, we restrict this range further to match the Racket \texttt{fixnum}
@@ -634,7 +634,7 @@ entire program is with a recursive function.  As a first example of
 such a function, we define \texttt{exp?} below, which takes an
 arbitrary S-expression, {\tt sexp}, and determines whether or not {\tt
   sexp} is an $R_0$ expression. Note that each match clause
-corresponds to one grammar rule the body of each clause makes a
+corresponds to one grammar rule and the body of each clause makes a
 recursive call for each child node. This pattern of recursive function
 is so common that it has a name, \emph{structural recursion}.  In
 general, when a recursive function is defined using a sequence of
